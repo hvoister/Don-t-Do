@@ -24,5 +24,10 @@ namespace My_ToDo
                 today_lab.Text = "Today: " + DateTime.Now;
            
         }
+
+        private void Calendar_Click(object sender, EventArgs e)
+        {
+            calendarpanel.Visible = true;
+        }
     }
 }
