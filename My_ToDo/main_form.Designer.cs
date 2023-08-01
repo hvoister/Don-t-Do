@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -40,10 +43,12 @@
             this.today_lab = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.calendarpanel = new System.Windows.Forms.Panel();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.calendar_month = new System.Windows.Forms.Label();
+            this.calendargrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.calendarpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calendargrid)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -171,24 +176,60 @@
             // 
             // calendarpanel
             // 
-            this.calendarpanel.Controls.Add(this.monthCalendar1);
+            this.calendarpanel.Controls.Add(this.calendar_month);
+            this.calendarpanel.Controls.Add(this.calendargrid);
             this.calendarpanel.Location = new System.Drawing.Point(289, 93);
             this.calendarpanel.Name = "calendarpanel";
             this.calendarpanel.Size = new System.Drawing.Size(745, 473);
             this.calendarpanel.TabIndex = 5;
             this.calendarpanel.Visible = false;
             // 
-            // monthCalendar1
+            // calendar_month
             // 
-            this.monthCalendar1.BackColor = System.Drawing.SystemColors.Control;
-            this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(4, 3);
-            this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar1.Font = new System.Drawing.Font("OCR A Extended", 12F);
-            this.monthCalendar1.Location = new System.Drawing.Point(39, 7);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.ShowToday = false;
-            this.monthCalendar1.TabIndex = 0;
-            this.monthCalendar1.TitleBackColor = System.Drawing.SystemColors.HotTrack;
+            this.calendar_month.AutoSize = true;
+            this.calendar_month.BackColor = System.Drawing.SystemColors.Control;
+            this.calendar_month.Font = new System.Drawing.Font("OCR A Extended", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calendar_month.Location = new System.Drawing.Point(2, 8);
+            this.calendar_month.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.calendar_month.Name = "calendar_month";
+            this.calendar_month.Size = new System.Drawing.Size(38, 37);
+            this.calendar_month.TabIndex = 5;
+            this.calendar_month.Text = "_";
+            // 
+            // calendargrid
+            // 
+            this.calendargrid.AllowUserToAddRows = false;
+            this.calendargrid.AllowUserToDeleteRows = false;
+            this.calendargrid.AllowUserToResizeColumns = false;
+            this.calendargrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("OCR A Extended", 15.75F);
+            this.calendargrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.calendargrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("OCR A Extended", 15.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.calendargrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.calendargrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.calendargrid.ColumnHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("OCR A Extended", 15.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.calendargrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.calendargrid.GridColor = System.Drawing.SystemColors.Control;
+            this.calendargrid.Location = new System.Drawing.Point(3, 47);
+            this.calendargrid.Name = "calendargrid";
+            this.calendargrid.ReadOnly = true;
+            this.calendargrid.RowHeadersVisible = false;
+            this.calendargrid.Size = new System.Drawing.Size(739, 423);
+            this.calendargrid.TabIndex = 0;
             // 
             // main_form
             // 
@@ -209,6 +250,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.calendarpanel.ResumeLayout(false);
+            this.calendarpanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calendargrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,7 +270,8 @@
         private System.Windows.Forms.Label today_lab;
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.Panel calendarpanel;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.DataGridView calendargrid;
+        private System.Windows.Forms.Label calendar_month;
     }
 }
 
