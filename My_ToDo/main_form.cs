@@ -43,8 +43,7 @@ namespace My_ToDo
                 calendar_month.Text = current_date[2] + " " + months[current_month];
 
                 //вычисление дней в месяце
-                //int daysinmonth = DateTime.DaysInMonth(Convert.ToInt16(current_date[2]), Convert.ToInt16(current_date[1]));
-                int daysinmonth = DateTime.DaysInMonth(2024, 4);
+                int daysinmonth = DateTime.DaysInMonth(Convert.ToInt16(current_date[2]), Convert.ToInt16(current_date[1]));
 
                 for (int i = 0; i < 5; i++)
                 {
