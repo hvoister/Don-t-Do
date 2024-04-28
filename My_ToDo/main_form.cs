@@ -45,52 +45,75 @@ namespace My_ToDo
                 //вычисление дней в месяце
                 int daysinmonth = DateTime.DaysInMonth(Convert.ToInt16(current_date[2]), Convert.ToInt16(current_date[1]));
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 7; i++)
                 {
                     calendargrid.Columns.Add($"{i + 1}", $"{i + 1}");
                 }
+                calendargrid.Rows.Add(5); //создание строк календаря
 
-                switch (daysinmonth)
-                {
-                    case 31:
-                        calendargrid.Rows.Add(7);
-                        break;
-                    case 30:
-                    case 29:
-                    case 28:
-                        calendargrid.Rows.Add(6);
-                        break;
-                }
 
-                // заполнение оставшихся ячеек
+
+
+                // нужно узнать последний день недели прошлого месяца и исходя из этого рассчитывать начальную точку заполнения (заполнение ниже потенциально хорошее)
+
+
+
+                //int lastWeekFull = 0;
+                //for (int i = 0; i < calendargrid.Rows.Count; i++)
+                //{
+                //    for (int j = 0; j < calendargrid.Columns.Count; j++)
+                //    {
+                //        if (calendargrid.Rows[i].Cells[j].Value == null || string.IsNullOrEmpty(calendargrid.Rows[i].Cells[j].Value.ToString()))
+                //        {
+                //            lastWeekFull++;
+                //        }
+                //    }
+                //}
+
                 int start = 1;
-                switch (daysinmonth)
+                int startDayOfWeek = 7 - lastWeekFull;
+                // заполнение оставшихся ячеек с начала недели (с понедельника)  
+                for (int i = 0; i < 5; i++)
                 {
-                    case 31:
-                        for (int i = 0; i < 7; i++)
-                        {
-                            for (int j = 0; j < 5; j++)
-                            {
-                                calendargrid.Rows[i].Cells[j].Value = start;
-                                start++;
-                                if (start == (daysinmonth + 1)) break;
-                            }
-                        }
-                        break;
-                    case 30:
-                    case 29:
-                    case 28:
-                        for (int i = 0; i < 6; i++)
-                        {
-                            for (int j = 0; j < 5; j++)
-                            {
-                                calendargrid.Rows[i].Cells[j].Value = start;
-                                start++;
-                                if (start == (daysinmonth + 1)) break;
-                            }
-                        }
-                        break;
+                    for (int j = startDayOfWeek; j < 7; j++)
+                    {
+                        calendargrid.Rows[i].Cells[j].Value = start;
+                        start++;
+                        if (start == (daysinmonth + 1)) break;
+                    }
                 }
+
+                
+                
+
+                //int start = 1;
+                //switch (daysinmonth)
+                //{
+                //    case 31:
+                //        for (int i = 0; i < 7; i++)
+                //        {
+                //            for (int j = 0; j < 5; j++)
+                //            {
+                //                calendargrid.Rows[i].Cells[j].Value = start;
+                //                start++;
+                //                if (start == (daysinmonth + 1)) break;
+                //            }
+                //        }
+                //        break;
+                //    case 30:
+                //    case 29:
+                //    case 28:
+                //        for (int i = 0; i < 6; i++)
+                //        {
+                //            for (int j = 0; j < 5; j++)
+                //            {
+                //                calendargrid.Rows[i].Cells[j].Value = start;
+                //                start++;
+                //                if (start == (daysinmonth + 1)) break;
+                //            }
+                //        }
+                //        break;
+                //}
                 open_calendar = true;
             }
         }
